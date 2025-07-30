@@ -1,14 +1,14 @@
-@for (user of users(); track user.id;) {
+<ul>
+  @for (user of users(); track user.id;) {
   <li>
     {{user.name}}
-    <button
-      (click)="remove(user)"
-      >
-    Remover
+    <button (click)="remove(user)">
+      Remover
     </button>
   </li>
-} @empty {
-    <h1>
-        Não existem usuários
-    </h1>
-}
+  } @empty {
+  <h1>
+    Não existem usuários
+  </h1>
+  }
+</ul>
