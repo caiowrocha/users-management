@@ -1,0 +1,14 @@
+@for (user of users(); track user.id;) {
+  <li>
+    {{user.name}}
+    <button
+      (click)="remove(user)"
+      >
+    Remover
+    </button>
+  </li>
+} @empty {
+    <h1>
+        Não existem usuários
+    </h1>
+}
