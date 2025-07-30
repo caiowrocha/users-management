@@ -1,17 +1,16 @@
-import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { inject, Injectable } from '@angular/core';
 import { delay, Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class Users {
+  apiUrl: string = "http://localhost:3000/users";
+
+  httpClient = inject(HttpClient);
+
   getAll(): Observable<{ id: number; name: string }[]> {
-    return of([
-      { id: 1, name: 'Alice' },
-      { id: 2, name: 'Bob' },
-      { id: 3, name: 'Charlie' },
-      { id: 4, name: 'Dave' },
-      { id: 5, name: 'Eve' },
-    ]).pipe(delay(1500));
+    return this.httpClient.get<{ id: number; name: string }[]>(this.apiUrl);
   }
 }
